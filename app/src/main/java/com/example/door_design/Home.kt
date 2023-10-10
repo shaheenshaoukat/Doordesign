@@ -108,7 +108,7 @@ class Home : AppCompatActivity() {
 
         itemlist.add(Model("Double Door",R.drawable.doubleeight))
         itemlist.add(Model("Flush Door",R.drawable.flushdooreight))
-        itemlist.add(Model("French Door",R.drawable.frencheight))
+        itemlist.add(Model("French Door",R.drawable.frenchtwenty))
         itemlist.add(Model("Glass Door",R.drawable.glasseight))
         itemlist.add(Model("Panel Door",R.drawable.paneleight))
         itemlist.add(Model("Pocket Door",R.drawable.pocketseventeen))
@@ -184,7 +184,7 @@ class Home : AppCompatActivity() {
         itemlist.add(Model_moreimages(R.drawable.doubletwelve))
         itemlist.add(Model_moreimages(R.drawable.doublethirteen))
         itemlist.add(Model_moreimages(R.drawable.frenchseven))
-        itemlist.add(Model_moreimages(R.drawable.frencheight))
+        itemlist.add(Model_moreimages(R.drawable.frenchtwenty))
         itemlist.add(Model_moreimages(R.drawable.frenchnine))
         itemlist.add(Model_moreimages(R.drawable.frenchten))
         itemlist.add(Model_moreimages(R.drawable.frencheleven))

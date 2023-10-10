@@ -40,7 +40,6 @@
                android:gravity="center"
                android:textSize="18dp"
                android:padding="5dp"
-               android:fontFamily="@font/myfontlight"
                app:layout_constraintStart_toStartOf="parent"
                app:layout_constraintTop_toBottomOf="@id/img" />
        </androidx.constraintlayout.widget.ConstraintLayout>

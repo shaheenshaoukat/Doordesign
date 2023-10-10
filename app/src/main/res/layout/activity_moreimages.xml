@@ -28,7 +28,6 @@
             android:id="@+id/tvName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/myfontbold"
             android:text="@string/app_name"
             android:layout_marginLeft="20dp"
             android:textColor="@color/white"

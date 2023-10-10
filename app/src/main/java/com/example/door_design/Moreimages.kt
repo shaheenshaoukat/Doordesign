@@ -73,6 +73,7 @@ class Moreimages : AppCompatActivity() {
         itemlist.add(Model_moreimages(R.drawable.flushdoorthree))
         itemlist.add(Model_moreimages(R.drawable.flushdoorfour))
         itemlist.add(Model_moreimages(R.drawable.flushdoorfive))
+        itemlist.add(Model_moreimages(R.drawable.flushdoorsix))
         itemlist.add(Model_moreimages(R.drawable.flushdoorseven))
         itemlist.add(Model_moreimages(R.drawable.flushdooreight))
         itemlist.add(Model_moreimages(R.drawable.flushdoornine))
@@ -88,7 +89,7 @@ class Moreimages : AppCompatActivity() {
         itemlist.add(Model_moreimages(R.drawable.frenchfive))
         itemlist.add(Model_moreimages(R.drawable.frenchsix))
         itemlist.add(Model_moreimages(R.drawable.frenchseven))
-        itemlist.add(Model_moreimages(R.drawable.frencheight))
+        itemlist.add(Model_moreimages(R.drawable.frenchtwenty))
         itemlist.add(Model_moreimages(R.drawable.frenchnine))
         itemlist.add(Model_moreimages(R.drawable.frenchten))
         itemlist.add(Model_moreimages(R.drawable.frencheleven))
@@ -103,7 +104,6 @@ class Moreimages : AppCompatActivity() {
         itemlist.add(Model_moreimages(R.drawable.frenchtwenty))
         itemlist.add(Model_moreimages(R.drawable.frenchtwentyone))
         itemlist.add(Model_moreimages(R.drawable.frenchtwentytwo))
-        itemlist.add(Model_moreimages(R.drawable.frenchtwentythree))
     }
     fun Glassdoor(){
 
@@ -150,6 +150,7 @@ class Moreimages : AppCompatActivity() {
         itemlist.add(Model_moreimages(R.drawable.panelseventeen))
         itemlist.add(Model_moreimages(R.drawable.paneleighteen))
         itemlist.add(Model_moreimages(R.drawable.panelninteen))
+        itemlist.add(Model_moreimages(R.drawable.paneltwenty))
 
     }
     fun Pocketdoor(){
