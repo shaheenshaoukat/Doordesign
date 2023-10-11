@@ -73,9 +73,7 @@ class Moreimages : AppCompatActivity() {
         itemlist.add(Model_moreimages(R.drawable.flushdoorthree))
         itemlist.add(Model_moreimages(R.drawable.flushdoorfour))
         itemlist.add(Model_moreimages(R.drawable.flushdoorfive))
-        itemlist.add(Model_moreimages(R.drawable.flushdoorsix))
         itemlist.add(Model_moreimages(R.drawable.flushdoorseven))
-        itemlist.add(Model_moreimages(R.drawable.flushdooreight))
         itemlist.add(Model_moreimages(R.drawable.flushdoornine))
         itemlist.add(Model_moreimages(R.drawable.flushdoorten))
 

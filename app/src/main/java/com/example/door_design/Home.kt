@@ -36,12 +36,15 @@ class Home : AppCompatActivity() {
         //carouselcode start
         carousel.registerLifecycle(lifecycle)
         val list: MutableList<CarouselItem> = ArrayList()
-        list.add(CarouselItem(R.drawable.doubleeight, "hello"))
-        list.add(CarouselItem(R.drawable.glasseight, "hello"))
-        list.add(CarouselItem(R.drawable.glasseleven, "hello"))
-        list.add(CarouselItem(R.drawable.paneleight, "hello"))
-        list.add(CarouselItem(R.drawable.flushdooreight, "hello"))
-        list.add(CarouselItem(R.drawable.flushdoornine, "hello"))
+        list.add(CarouselItem(R.drawable.one, "hello"))
+        list.add(CarouselItem(R.drawable.two, "hello"))
+        list.add(CarouselItem(R.drawable.three, "hello"))
+        list.add(CarouselItem(R.drawable.five, "hello"))
+        list.add(CarouselItem(R.drawable.six, "hello"))
+        list.add(CarouselItem(R.drawable.seven, "hello"))
+        list.add(CarouselItem(R.drawable.eight, "hello"))
+        list.add(CarouselItem(R.drawable.nine, "hello"))
+        list.add(CarouselItem(R.drawable.ten, "hello"))
         carousel.autoPlay = true
         carousel.showCaption = false
         carousel.autoPlayDelay = 2000
@@ -107,7 +110,7 @@ class Home : AppCompatActivity() {
         val itemlist= mutableListOf<Model>()
 
         itemlist.add(Model("Double Door",R.drawable.doubleeight))
-        itemlist.add(Model("Flush Door",R.drawable.flushdooreight))
+        itemlist.add(Model("Flush Door",R.drawable.flushdoorfour))
         itemlist.add(Model("French Door",R.drawable.frenchtwenty))
         itemlist.add(Model("Glass Door",R.drawable.glasseight))
         itemlist.add(Model("Panel Door",R.drawable.paneleight))

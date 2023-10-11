@@ -3,6 +3,7 @@ package com.example.door_design
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
@@ -11,6 +12,8 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.example.door_design.databinding.ActivityDetailsBinding
@@ -22,6 +25,8 @@ class Details_Activity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailsBinding
     var myDb: DatabaseHelper? = null
     private var isFavorite = false
+    private val MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 123
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailsBinding.inflate(layoutInflater)
@@ -122,65 +127,95 @@ class Details_Activity : AppCompatActivity() {
                     startActivity(Intent.createChooser(shareIntent, "Share Image"))
                 }
                 binding.save.setOnClickListener {
-                    // Get the image to save based on the current position
-                    val imageToSave = rearrangedList[position]
+                    if (checkPermission()) {
+                        // Get the image to save based on the current position
+                        val imageToSave = rearrangedList[position]
 
-                    // Convert the resource ID to a Bitmap
-                    val imageBitmap = BitmapFactory.decodeResource(resources, imageToSave)
+                        // Convert the resource ID to a Bitmap
+                        val imageBitmap = BitmapFactory.decodeResource(resources, imageToSave)
 
-                    // Create a ContentValues object to store the image details
-                    val contentValues = ContentValues().apply {
-                        put(
-                            MediaStore.Images.Media.DISPLAY_NAME,
-                            "my_image.jpg"
-                        ) // Specify the image file name
-                        put(
-                            MediaStore.Images.Media.MIME_TYPE,
-                            "image/jpeg"
-                        ) // Specify the image MIME type
-                    }
-
-                    // Insert the image into the MediaStore
-                    val imageUri = contentResolver.insert(
-                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                        contentValues
-                    )
-                    try {
-                        val outputStream = contentResolver.openOutputStream(imageUri!!)
-                        if (outputStream != null) {
-                            imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
+                        // Create a ContentValues object to store the image details
+                        val contentValues = ContentValues().apply {
+                            put(MediaStore.Images.Media.DISPLAY_NAME, "my_image.jpg") // Specify the image file name
+                            put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg") // Specify the image MIME type
                         }
-                        outputStream?.close()
 
-                        Toast.makeText(
-                            this@Details_Activity,
-                            "Image saved to gallery",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                        Toast.makeText(
-                            this@Details_Activity,
-                            "Failed to save image",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        // Insert the image into the MediaStore
+                        val imageUri = contentResolver.insert(
+                            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                            contentValues
+                        )
+                        try {
+                            val outputStream = contentResolver.openOutputStream(imageUri!!)
+                            if (outputStream != null) {
+                                imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
+                                outputStream.close()
+                                Toast.makeText(
+                                    this@Details_Activity,
+                                    "Image saved to gallery",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        } catch (e: Exception) {
+                            e.printStackTrace()
+                            Toast.makeText(
+                                this@Details_Activity,
+                                "Failed to save image",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    } else {
+                        requestPermission()
                     }
                 }
-
             }
-
         })
+    }
 
+    private fun checkPermission(): Boolean {
+        return ContextCompat.checkSelfPermission(
+            this,
+            android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+        ) == PackageManager.PERMISSION_GRANTED
+    }
 
+    private fun requestPermission() {
+        ActivityCompat.requestPermissions(
+            this,
+            arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),
+            MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE
+        )
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // Permission granted, proceed with image saving
+                    // ...
+                } else {
+                    // Permission denied, show a message or handle it accordingly
+                    Toast.makeText(
+                        this,
+                        "Permission denied. Image cannot be saved.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
     }
 
     fun back(view: View) {
         finish()
-
     }
 
     private fun getImageUriForPosition(position: Int): Uri {
-
+        // Implement as needed
         return Uri.EMPTY
     }
 }
